@@ -45,10 +45,11 @@
         }
         // Make sure the client is loaded before calling this method.
         function execute() {
+            var $searchQuery = document.getElementById("keyword");
             return gapi.client.youtube.search.list({
                     "part": "snippet",
                     "maxResults": 25,
-                    "q": "my little pony"
+                    "q": $searchQuery
                 })
                 .then(function(response) {
                         // Handle the results here (response.result has the parsed body).
