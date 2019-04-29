@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>QuickTube</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="heading">
+        <div id="logo">
+            <b>QuickTube</b>
+        </div>
+        <div id="search">
+            <input type="text" id="keyword">&nbsp</input>
+            <button type="button" class="btn btn-primary" id="commit">Search</button>
+        </div>
+        <div id="login">
+            <button type="button" class="btn btn-primary" id="signin">Login</button>
+        </div>
+    </div>
+    <div class="mostViewed">Most Viewed</div>
+    <div class="mostPopular">Most Popular</div>
+    <div class="mostDisliked">Most Disliked</div>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        /**
+         * Sample JavaScript code for youtube.videos.list
+         * See instructions for running APIs Explorer code samples locally:
+         * https://developers.google.com/explorer-help/guides/code_samples#javascript
+         */
+
+        function loadClient() {
+            gapi.client.setApiKey("AIzaSyBZHX6SuAgh2zbwQ9Og3HFA3m3VaMf-Z2k");
+            return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+                .then(function() { console.log("GAPI client loaded for API"); },
+                    function(err) { console.error("Error loading GAPI client for API", err); });
+        }
+        // Make sure the client is loaded before calling this method.
+        function execute() {
+            return gapi.client.youtube.videos.list({
+                    "part": "snippet,contentDetails,statistics",
+                    "chart": "mostPopular",
+                    "regionCode": "US"
+                })
+                .then(function(response) {
+                        // Handle the results here (response.result has the parsed body).
+                        console.log("Response", response);
+                    },
+                    function(err) { console.error("Execute error", err); });
+        }
+        gapi.load("client");
+    </script>
+    <button onclick="loadClient()">load</button>
+    <button onclick="execute()">execute</button>
+
+</body>
+
+<script>
+    $(document).ready(function() {
+        $("#login").on('click', function() {
+            window.location = "login.html";
+        });
+    });
+</script>
+
+<footer>QuickTube&copy by Antonio, Daichi, Maximillian, and Ricky</footer>
+
+</html>
