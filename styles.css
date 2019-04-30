@@ -1,5 +1,5 @@
 
-.heading, #random, #search, #login, #keyword, #commit, #login, #signin{
+.heading, #random, #search, #login, #keyword, #commit, #login, #signin, #searchResults{
     display: flex;
     margin: auto;
     align-items: center;

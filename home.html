@@ -24,6 +24,7 @@
             <button type="button" class="btn btn-primary" id="signin">Login</button>
         </div>
     </div>
+    <div id="searchResults">Search Results</div>
     <div class="mostViewed">Most Viewed</div>
     <div class="mostPopular">Most Popular</div>
     <div class="mostDisliked">Most Disliked</div>
@@ -36,7 +37,8 @@
          * See instructions for running APIs Explorer code samples locally:
          * https://developers.google.com/explorer-help/guides/code_samples#javascript
          */
-        
+
+
         function loadClient() {
             gapi.client.setApiKey("AIzaSyBZHX6SuAgh2zbwQ9Og3HFA3m3VaMf-Z2k");
             return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
@@ -53,12 +55,19 @@
                 })
                 .then(function(response) {
                         // Handle the results here (response.result has the parsed body).
-                        console.log("Response", response);
+                        document.getElementById("searchResults").innerHTML += "<br>";
+                        console.log(response.result.items);
+                        response.result.items.forEach(showURL);
                     },
                     function(err) { console.error("Execute error", err); });
         }
-        gapi.load("client");
 
+        function showURL(item) {
+            $("[id=searchResults]").append("<iframe id='video' src='' ></iframe>")
+            console.log(item.id.videoId);
+            document.getElementById("video").src = "https://youtube.com/embed/" + item.id.videoId;
+        }
+        gapi.load("client");
     </script>
     <button onclick="loadClient()">load</button>
     <button onclick="execute()">execute</button>
