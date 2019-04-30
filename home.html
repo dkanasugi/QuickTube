@@ -62,11 +62,13 @@
                     function(err) { console.error("Execute error", err); });
         }
 
+
         function showURL(item) {
             $("[id=searchResults]").append("<iframe id='video' src='' ></iframe>")
             console.log(item.id.videoId);
             document.getElementById("video").src = "https://youtube.com/embed/" + item.id.videoId;
         }
+
         gapi.load("client");
     </script>
     <button onclick="loadClient()">load</button>
