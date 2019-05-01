@@ -1,5 +1,5 @@
 
-.heading, #random, #search, #login, #keyword, #commit, #login, #signin, #searchResults, #hist{
+.heading, #random, #search, #login, #keyword, #commit, #login, #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults{
     display: flex;
     margin: auto;
     align-items: center;
@@ -13,6 +13,8 @@
 .mostViewed, .mostPopular, .mostDisliked{
     padding-right: 50px;
     padding-bottom: 50px;
+
+    
 }
 
 footer{
