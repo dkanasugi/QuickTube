@@ -19,7 +19,7 @@
         </div>
         <div id="search">
             <input type="text" id="keyword">&nbsp</input>
-            <button type="button" onclick="execute()" class="btn btn-primary" id="commit">Search</button>
+            <button type="button" onclick="execute_Search()" class="btn btn-primary" id="commit">Search</button>
         </div>
         <div class ="right">
             <div id="login">
@@ -38,19 +38,17 @@
 
 
     <script>
-        /**
-         * Sample JavaScript code for youtube.search.list
-         * See instructions for running APIs Explorer code samples locally:
-         * https://developers.google.com/explorer-help/guides/code_samples#javascript
-         */
+        
         function loadClient() {
             gapi.client.setApiKey("AIzaSyBZHX6SuAgh2zbwQ9Og3HFA3m3VaMf-Z2k");
             return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
                 .then(function() { console.log("GAPI client loaded for API"); },
                     function(err) { console.error("Error loading GAPI client for API", err); });
         }
-        // Make sure the client is loaded before calling this method.
-        function execute() {
+        
+        //var search_vid = [];
+        function execute_Search() {
+            //search_vid = []
             var $searchQuery = document.getElementById("keyword").value;
             return gapi.client.youtube.search.list({
                     "part": "snippet",
@@ -65,16 +63,15 @@
                     },
                     function(err) { console.error("Execute error", err); });
         }
-        
+        var num = 0;
         function showURL(item) {
-           // $("[id=searchResults]").append("<iframe id='video' src='https://youtube.com/embed/' + item.id.videoId frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
-            
+           //search_vid.push("https://youtube.com/embed/" + item.id.videoId); 
              console.log("https://youtube.com/embed/" + item.id.videoId);
-             
+             console.log(num);
              $("[id=searchResults]").append(`<div class="col s3">
-          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`);
-             
+          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><button type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist${num++}">Add to playlist</button></div>`);
         }
+        num = 0;
         gapi.load("client");
     </script>
     
@@ -82,12 +79,9 @@
 </body>
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
-  /**
-   * Sample JavaScript code for youtube.videos.list
-   * See instructions for running APIs Explorer code samples locally:
-   * https://developers.google.com/explorer-help/guides/code_samples#javascript
-   */
+//var pop_vid = [];
   function execute_Popular() {
+      //pop_vid = [];
     return gapi.client.youtube.videos.list({
       "part": "snippet",
       "chart": "mostPopular",
@@ -101,19 +95,20 @@
               },
               function(err) { console.error("Execute error", err); });
   }
+  var count = 0;
   function showPopular(item) {
-            
+            //pop_vid.push("https://youtube.com/embed/" + item.id);
              console.log("https://youtube.com/embed/" + item.id);
-             
+             console.log(count);
              $("[id=popularResults]").append(`<div class="col s3">
-          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`);
+          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist${count++}">Add to playlist</button></div>`);
              
         }
-  
-  gapi.load("client");
+        count = 0;
+  //gapi.load("client");
 </script>
-<button onclick="execute_Popular()">for popular</button>
-
+<button onclick="execute_Popular()">Display Popular Video</button>
+    
 
 
 <script>
