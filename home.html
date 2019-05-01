@@ -45,6 +45,7 @@
         }
         
         //var search_vid = [];
+        var num = 0;
         function execute_Search() {
             //search_vid = []
             var $searchQuery = document.getElementById("keyword").value;
@@ -57,11 +58,14 @@
                         // Handle the results here (response.result has the parsed body).
                         document.getElementById("searchResults").innerHTML += "<br>";
                         console.log(response.result.items);
+                        $("#searchResults").html("");
                         response.result.items.forEach(showURL);
+                        num = 0;
                     },
                     function(err) { console.error("Execute error", err); });
         }
-        var num = 0;
+        
+        /*HAVE TO LEARN HOW TO CLEAR VIDEO AFTER EACH SEARCH*/
         function showURL(item) {
            //search_vid.push("https://youtube.com/embed/" + item.id.videoId); 
              console.log("https://youtube.com/embed/" + item.id.videoId);
@@ -77,30 +81,30 @@
 </body>
 <script src="https://apis.google.com/js/api.js"></script>
 <script>
-//var pop_vid = [];
+var pop_vid = [];
+var count = 0;
   function execute_Popular() {
-      //pop_vid = [];
+      pop_vid = [];
     return gapi.client.youtube.videos.list({
       "part": "snippet",
       "chart": "mostPopular",
       "regionCode": "US"
     })
         .then(function(response) {
-                // Handle the results here (response.result has the parsed body).
-              
                 console.log(response.result.items[0].id);
                 response.result.items.forEach(showPopular);
+                count = 0;
               },
               function(err) { console.error("Execute error", err); });
   }
-  var count = 0;
-  function showPopular(item) {
-            //pop_vid.push("https://youtube.com/embed/" + item.id);
-             console.log("https://youtube.com/embed/" + item.id);
+  
+  
+  function showPopular(item) { 
+            pop_vid.push("https://youtube.com/embed/" + item.id);
+             //console.log("https://youtube.com/embed/" + item.id);
              console.log(count);
              $("[id=popularResults]").append(`<div class="col s3">
           <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist${count++}">Add to playlist</button></div>`);
-             
         }
         count = 0;
   //gapi.load("client");
@@ -113,6 +117,7 @@
     $(document).ready(function() {
         $("#login").on('click', function() {
             window.location = "login.html";
+            //$("#login").html("Log Out");
         });
         $("#add_pop_playlist0").on('click', function() {
            $("#add_pop_playlist0").html("Added");
