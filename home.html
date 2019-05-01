@@ -28,9 +28,9 @@
             <button type="button" class="btn btn-primary" id="hist">History</button>
         </div>
     </div>
-    <div>Search Result</div><br>
-    <div id="searchResults"> </div>
-    <div class="mostPopular">Most Popular</div>
+    <div>Search Result</div>
+    <div id="searchResults"></div>
+    <div>Most Popular</div>
     <div id="popularResults"></div>
     <script src="https://apis.google.com/js/api.js"></script>
 
@@ -52,7 +52,7 @@
             var $searchQuery = document.getElementById("keyword").value;
             return gapi.client.youtube.search.list({
                     "part": "snippet",
-                    "maxResults": 8,
+                    "maxResults": 5,
                     "q": $searchQuery
                 })
                 .then(function(response) {
@@ -85,7 +85,6 @@
    * See instructions for running APIs Explorer code samples locally:
    * https://developers.google.com/explorer-help/guides/code_samples#javascript
    */
-
   function execute_Popular() {
     return gapi.client.youtube.videos.list({
       "part": "snippet",
