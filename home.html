@@ -11,30 +11,34 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="loadClient()">
     <div class="heading">
         <div id="logo">
             <b>QuickTube</b>
         </div>
         <div id="search">
             <input type="text" id="keyword">&nbsp</input>
-            <button type="button" class="btn btn-primary" id="commit">Search</button>
+            <button type="button" onclick="execute()" class="btn btn-primary" id="commit">Search</button>
         </div>
         <div id="login">
             <button type="button" class="btn btn-primary" id="signin">Login</button>
         </div>
+        <div id="history">
+            <button type="button" class="btn btn-primary" id="hist">History</button>
+        </div>
     </div>
-    <div class="mostViewed">Most Viewed</div>
+    <div>Search Result</div><br>
+    <div id="searchResults"> </div>
     <div class="mostPopular">Most Popular</div>
-    <div class="mostDisliked">Most Disliked</div>
     <script src="https://apis.google.com/js/api.js"></script>
+
+
     <script>
         /**
-         * Sample JavaScript code for youtube.videos.list
+         * Sample JavaScript code for youtube.search.list
          * See instructions for running APIs Explorer code samples locally:
          * https://developers.google.com/explorer-help/guides/code_samples#javascript
          */
-
         function loadClient() {
             gapi.client.setApiKey("AIzaSyBZHX6SuAgh2zbwQ9Og3HFA3m3VaMf-Z2k");
             return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
@@ -43,21 +47,30 @@
         }
         // Make sure the client is loaded before calling this method.
         function execute() {
-            return gapi.client.youtube.videos.list({
-                    "part": "snippet,contentDetails,statistics",
-                    "chart": "mostPopular",
-                    "regionCode": "US"
+            var $searchQuery = document.getElementById("keyword").value;
+            return gapi.client.youtube.search.list({
+                    "part": "snippet",
+                    "maxResults": 8,
+                    "q": $searchQuery
                 })
                 .then(function(response) {
                         // Handle the results here (response.result has the parsed body).
-                        console.log("Response", response);
+                        document.getElementById("searchResults").innerHTML += "<br>";
+                        console.log(response.result.items);
+                        response.result.items.forEach(showURL);
                     },
                     function(err) { console.error("Execute error", err); });
         }
+        function showURL(item) {
+            $("[id=searchResults]").append("<iframe id='video' src='https://youtube.com/embed/' + item.id.videoId' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>")
+            
+            //document.getElementById("video").src = "https://youtube.com/embed/" + item.id.videoId;
+            
+             console.log("https://youtube.com/embed/" + item.id.videoId);
+        }
         gapi.load("client");
     </script>
-    <button onclick="loadClient()">load</button>
-    <button onclick="execute()">execute</button>
+    
 
 </body>
 
@@ -68,7 +81,6 @@
         });
     });
 </script>
-
 <footer>QuickTube&copy by Antonio, Daichi, Maximillian, and Ricky</footer>
 
 </html>
