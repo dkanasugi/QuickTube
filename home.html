@@ -12,7 +12,8 @@
 </head>
 
 <body onload="loadClient()">
-    <div class="heading">
+    
+    <div class="heading" >
         <div id="logo">
             <b>QuickTube</b>
         </div>
@@ -27,6 +28,7 @@
     <div>Search Result</div><br>
     <div id="searchResults"> </div>
     <div class="mostPopular">Most Popular</div>
+    <div id="popularResults"></div>
     <script src="https://apis.google.com/js/api.js"></script>
 
 
@@ -58,18 +60,57 @@
                     },
                     function(err) { console.error("Execute error", err); });
         }
+        
         function showURL(item) {
-            $("[id=searchResults]").append("<iframe id='video' src='https://youtube.com/embed/' + item.id.videoId' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>")
-            
-            //document.getElementById("video").src = "https://youtube.com/embed/" + item.id.videoId;
+           // $("[id=searchResults]").append("<iframe id='video' src='https://youtube.com/embed/' + item.id.videoId frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
             
              console.log("https://youtube.com/embed/" + item.id.videoId);
+             
+             $("[id=searchResults]").append(`<div class="col s3">
+          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`);
+             
         }
         gapi.load("client");
     </script>
     
 
 </body>
+<script src="https://apis.google.com/js/api.js"></script>
+<script>
+  /**
+   * Sample JavaScript code for youtube.videos.list
+   * See instructions for running APIs Explorer code samples locally:
+   * https://developers.google.com/explorer-help/guides/code_samples#javascript
+   */
+
+  function execute_Popular() {
+    return gapi.client.youtube.videos.list({
+      "part": "snippet",
+      "chart": "mostPopular",
+      "regionCode": "US"
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+              
+                console.log(response.result.items[0].id);
+                response.result.items.forEach(showPopular);
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+  function showPopular(item) {
+            
+             console.log("https://youtube.com/embed/" + item.id);
+             
+             $("[id=popularResults]").append(`<div class="col s3">
+          <iframe height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`);
+             
+        }
+  
+  gapi.load("client");
+</script>
+<button onclick="execute_Popular()">for popular</button>
+
+
 
 <script>
     $(document).ready(function() {
