@@ -29,6 +29,12 @@
             <div id="login">
                 <button type="button" class="btn btn-primary" id="signin">Login</button>
             </div>
+<<<<<<< HEAD
+=======
+            <div id="account">
+                <button type="button" class="btn btn-primary" id="account">Account setting</button>
+            </div>
+>>>>>>> 3949e81abbf01bc52ca6d6bc5b52b0966e21f8d2
         </div>
     </div>
     <div>Search Result</div>
@@ -42,13 +48,16 @@
         function loadClient() {
             gapi.client.setApiKey("AIzaSyBZHX6SuAgh2zbwQ9Og3HFA3m3VaMf-Z2k");
             return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-                .then(function() { console.log("GAPI client loaded for API"); },
+                .then(function() { console.log("GAPI client loaded for API");
+                execute_Popular();
+                },
                     function(err) { console.error("Error loading GAPI client for API", err); });
         }
         
-        //var search_vid = [];
+        var search_vid = [];
+        var num = 0;
         function execute_Search() {
-            //search_vid = []
+            search_vid = []
             var $searchQuery = document.getElementById("keyword").value;
             return gapi.client.youtube.search.list({
                     "part": "snippet",
@@ -56,68 +65,65 @@
                     "q": $searchQuery
                 })
                 .then(function(response) {
-                        // Handle the results here (response.result has the parsed body).
                         document.getElementById("searchResults").innerHTML += "<br>";
                         console.log(response.result.items);
+                        $("#searchResults").html("");
                         response.result.items.forEach(showURL);
+                        num = 0;
                     },
                     function(err) { console.error("Execute error", err); });
         }
-        var num = 0;
+        
         function showURL(item) {
-           //search_vid.push("https://youtube.com/embed/" + item.id.videoId); 
-             console.log("https://youtube.com/embed/" + item.id.videoId);
-             console.log(num);
+             search_vid.push("https://youtube.com/embed/" + item.id.videoId); 
+             //console.log("https://youtube.com/embed/" + item.id.videoId);
              $("[id=searchResults]").append(`<div class="col s3">
           <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><button type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist${num++}">Add to playlist</button></div>`);
         }
         num = 0;
         gapi.load("client");
+        
+        var pop_vid = [];
+        var count = 0;
+          function execute_Popular() {
+              pop_vid = [];
+            return gapi.client.youtube.videos.list({
+              "part": "snippet",
+              "chart": "mostPopular",
+              "regionCode": "US"
+            })
+                .then(function(response) {
+                        console.log(response.result.items[0].id);
+                        response.result.items.forEach(showPopular);
+                        count = 0;
+                      },
+                      function(err) { console.error("Execute error", err); });
+          }
+          
+          function showPopular(item) { 
+                    pop_vid.push("https://youtube.com/embed/" + item.id);
+                     //console.log("https://youtube.com/embed/" + item.id);
+                     console.log(count);
+                     $("[id=popularResults]").append(`<div class="col s3">
+                  <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist${count++}">Add to playlist</button></div>`);
+                }
+                count = 0;
+          //$(document).ready(function() {
+                $("#login").on('click', function() {
+                    window.location = "login.html";
+                    //$("#login").html("Log Out");
+                });
+                $("#add_pop_playlist0").on('click', function() {
+                   $("#add_pop_playlist0").html("Added");
+                    console.log("button 1 clicked");
+                });
+           // });
+        
     </script>
     
 
 </body>
-<script src="https://apis.google.com/js/api.js"></script>
-<script>
-//var pop_vid = [];
-  function execute_Popular() {
-      //pop_vid = [];
-    return gapi.client.youtube.videos.list({
-      "part": "snippet",
-      "chart": "mostPopular",
-      "regionCode": "US"
-    })
-        .then(function(response) {
-                // Handle the results here (response.result has the parsed body).
-              
-                console.log(response.result.items[0].id);
-                response.result.items.forEach(showPopular);
-              },
-              function(err) { console.error("Execute error", err); });
-  }
-  var count = 0;
-  function showPopular(item) {
-            //pop_vid.push("https://youtube.com/embed/" + item.id);
-             console.log("https://youtube.com/embed/" + item.id);
-             console.log(count);
-             $("[id=popularResults]").append(`<div class="col s3">
-          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist${count++}">Add to playlist</button></div>`);
-             
-        }
-        count = 0;
-  //gapi.load("client");
-</script>
-<button onclick="execute_Popular()">Display Popular Video</button>
     
-
-
-<script>
-    $(document).ready(function() {
-        $("#login").on('click', function() {
-            window.location = "login.html";
-        });
-    });
-</script>
 <footer>QuickTube&copy by Antonio, Daichi, Maximillian, and Ricky</footer>
 
 </html>

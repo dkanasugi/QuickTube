@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 .heading, #random, #search, #login, #keyword, #commit, #login, #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults{
+=======
+.heading, #random, #search, #login, #keyword, #commit, #login,#account #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults, .right{
+>>>>>>> 3949e81abbf01bc52ca6d6bc5b52b0966e21f8d2
     display: flex;
     margin: auto;
     align-items: center;
@@ -53,7 +57,7 @@ footer{
 }
 
 #add_pop_playlist0, #add_pop_playlist1, #add_pop_playlist2, #add_pop_playlist3, #add_pop_playlist4, #add_pop_playlist5, #add_search_playlist0,
-#add_search_playlist1, #add_search_playlist2, #add_search_playlist3, #add_search_playlist4, #add_search_playlist5, #commit, #signin{
+#add_search_playlist1, #add_search_playlist2, #add_search_playlist3, #add_search_playlist4, #add_search_playlist5, #commit, #signin, #account{
     background-color: orange;
 }
 
