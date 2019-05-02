@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 .heading, #random, #search, #login, #keyword, #commit, #login, #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults{
 
 
+=======
+
+.heading, #random, #search, #login, #keyword, #commit, #login,#account #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults, .right{
+>>>>>>> 7d1b705c257da82c614aea95f308d2d213feb36b
     display: flex;
     margin: auto;
     align-items: center;
