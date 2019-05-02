@@ -15,8 +15,12 @@ $stmt = $conn->prepare($sql);
 $stmt->execute($namedParameters);
 $record = $stmt->fetch();
 
-  
-  $isAuthenticated = password_verify($_GET["password"], $record["password"]);
+if($_GET["password"] = $record["password"]){
+    $isAuthenticated = true;
+}else {
+    $isAuthenticated = false;
+}
+
     
   if ($isAuthenticated) {
     $_SESSION["username"] = $record["username"];
