@@ -41,7 +41,9 @@
         function loadClient() {
             gapi.client.setApiKey("AIzaSyBZHX6SuAgh2zbwQ9Og3HFA3m3VaMf-Z2k");
             return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-                .then(function() { console.log("GAPI client loaded for API"); },
+                .then(function() { console.log("GAPI client loaded for API");
+                execute_Popular();
+                },
                     function(err) { console.error("Error loading GAPI client for API", err); });
         }
         
@@ -99,7 +101,7 @@
                   <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist${count++}">Add to playlist</button></div>`);
                 }
                 count = 0;
-          $(document).ready(function() {
+          //$(document).ready(function() {
                 $("#login").on('click', function() {
                     window.location = "login.html";
                     //$("#login").html("Log Out");
@@ -108,11 +110,11 @@
                    $("#add_pop_playlist0").html("Added");
                     console.log("button 1 clicked");
                 });
-            });
+           // });
         
     </script>
     
-<button onclick="execute_Popular()">Display Popular Video</button>
+
 </body>
     
 <footer>QuickTube&copy by Antonio, Daichi, Maximillian, and Ricky</footer>
