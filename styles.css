@@ -1,4 +1,4 @@
-.heading, #random, #search, #login, #keyword, #commit, #login, #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults, {
+.heading, #random, #search, #login, #keyword, #commit, #login, #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults{
     display: flex;
     margin: auto;
     align-items: center;
