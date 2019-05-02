@@ -73,6 +73,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script>
+    /* global $ */
        $(document).ready(function(){
           $("#signUpBttn").on('click',function(){
                 window.location = "signUp.html";
@@ -80,6 +81,26 @@
           
           $("#mainPage").on('click',function(){
              window.location = "home.html"; 
+          });
+          
+          $("#loginButton").on('click',function(){
+             $.ajax({
+                 type:"GET",
+                 url:"login.php",
+                 dataType:"json",
+                 data:{
+                     "username": $("[name=username]").val(),
+                     "password": $("[name=password]").val()
+                 },
+                 success:function(data,status){
+                     if(data.isAuthenticated){
+                         window.location = "home.html";
+                     }else{
+                        $("#message").html("Incorrect username or password");
+                        $("#message").removeClass("open-hidden");
+                     }
+                 }
+             }); 
           });
        });
     </script>
