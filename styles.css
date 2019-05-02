@@ -1,8 +1,4 @@
-
-
-
-.heading, #random, #search, #login, #keyword, #commit, #login,#account #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults, .right{
-
+.heading, #random, #search, #login, #keyword, #commit, #login, #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults{
     display: flex;
     margin: auto;
     align-items: center;

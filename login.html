@@ -86,7 +86,7 @@
           $("#loginButton").on('click',function(){
              $.ajax({
                  type:"GET",
-                 url:"login.php",
+                 url:"api/login.php",
                  dataType:"json",
                  data:{
                      "username": $("[name=username]").val(),
