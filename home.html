@@ -80,7 +80,8 @@
              search_vid.push("https://youtube.com/embed/" + item.id.videoId); 
              //console.log("https://youtube.com/embed/" + item.id.videoId);
              $("[id=searchResults]").append(`<div class="col s3">
-          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen><button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id.videoId}">Add to playlist</button></iframe></div>`);
+          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id.videoId}">Add to playlist</button></div>`);
         }//<button type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist${num++}">Add to playlist</button>
         num = 0;
         gapi.load("client");
@@ -107,7 +108,8 @@
                      console.log("https://youtube.com/embed/" + item.id);
                      console.log(count);
                      $("[id=popularResults]").append(`<div class="col s3">
-                    <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id}">Add to playlist</button></div>` );
+                    <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id}">Add to playlist</button></div>` );
                     //<button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id}" + item.id + "'>Add to playlist</button>
                 }//<button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist${count++}">Add to playlist</button>
                 count = 0;
