@@ -30,10 +30,20 @@
             </div>
         </div>
     </div>
-    <div>Search Result</div>
+    <div id="searchdisplay">Search Result</div>
     <div id="searchResults"></div>
+        <button  type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist0">Add to playlist</button>
+        <button  type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist1">Add to playlist</button>
+        <button  type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist2">Add to playlist</button>
+        <button  type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist3">Add to playlist</button>
+        <button  type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist4">Add to playlist</button>
     <div>Most Popular</div>
     <div id="popularResults"></div>
+        <button  type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist0">Add to playlist</button>
+        <button  type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist1">Add to playlist</button>
+        <button  type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist2">Add to playlist</button>
+        <button  type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist3">Add to playlist</button>
+        <button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist4">Add to playlist</button>
     <script src="https://apis.google.com/js/api.js"></script>
 
 
@@ -42,6 +52,7 @@
             gapi.client.setApiKey("AIzaSyBZHX6SuAgh2zbwQ9Og3HFA3m3VaMf-Z2k");
             return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
                 .then(function() { console.log("GAPI client loaded for API");
+                hidden();
                 execute_Popular();
                 },
                     function(err) { console.error("Error loading GAPI client for API", err); });
@@ -63,6 +74,7 @@
                         $("#searchResults").html("");
                         response.result.items.forEach(showURL);
                         num = 0;
+                        visible()
                     },
                     function(err) { console.error("Execute error", err); });
         }
@@ -71,8 +83,8 @@
              search_vid.push("https://youtube.com/embed/" + item.id.videoId); 
              //console.log("https://youtube.com/embed/" + item.id.videoId);
              $("[id=searchResults]").append(`<div class="col s3">
-          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><button type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist${num++}">Add to playlist</button></div>`);
-        }
+          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`);
+        }//<button type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist${num++}">Add to playlist</button>
         num = 0;
         gapi.load("client");
         
@@ -98,17 +110,72 @@
                      //console.log("https://youtube.com/embed/" + item.id);
                      console.log(count);
                      $("[id=popularResults]").append(`<div class="col s3">
-                  <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist${count++}">Add to playlist</button></div>`);
-                }
+                  <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`);
+                }//<button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist${count++}">Add to playlist</button>
                 count = 0;
           //$(document).ready(function() {
+                function visible(){
+                //document.getElementById("myP").style.visibility = "visible";
+                document.getElementById("add_search_playlist0").style.visibility = "visible";
+                document.getElementById("add_search_playlist1").style.visibility = "visible";
+                document.getElementById("add_search_playlist2").style.visibility = "visible";
+                document.getElementById("add_search_playlist3").style.visibility = "visible";
+                document.getElementById("add_search_playlist4").style.visibility = "visible"; 
+                document.getElementById("searchdisplay").style.visibility = "visible";
+                }
+                function hidden(){
+                //document.getElementById("myP").style.visibility = "visible";
+                document.getElementById("add_search_playlist0").style.visibility='hidden';
+                document.getElementById("add_search_playlist1").style.visibility='hidden';
+                document.getElementById("add_search_playlist2").style.visibility='hidden';
+                document.getElementById("add_search_playlist3").style.visibility='hidden';
+                document.getElementById("add_search_playlist4").style.visibility='hidden'; 
+                document.getElementById("searchdisplay").style.visibility='hidden';
+                }
+                
                 $("#login").on('click', function() {
                     window.location = "login.html";
                     //$("#login").html("Log Out");
                 });
-                $("#add_pop_playlist0").on('click', function() {
+                $("#add_pop_playlist0").on('click', function() {//for Popular
                    $("#add_pop_playlist0").html("Added");
+                    console.log("button 0 clicked");
+                });
+                $("#add_pop_playlist1").on('click', function() {//for Popular
+                   $("#add_pop_playlist1").html("Added");
                     console.log("button 1 clicked");
+                });
+                $("#add_pop_playlist2").on('click', function() {//for Popular
+                   $("#add_pop_playlist2").html("Added");
+                    console.log("button 2 clicked");
+                });
+                $("#add_pop_playlist3").on('click', function() {//for Popular
+                   $("#add_pop_playlist3").html("Added");
+                    console.log("button 3 clicked");
+                });
+                $("#add_pop_playlist4").on('click', function() {//for Popular
+                   $("#add_pop_playlist4").html("Added");
+                    console.log("button 4 clicked");
+                });
+                $("#add_search_playlist0").on('click', function() {//for Search
+                   $("#add_search_playlist0").html("Added");
+                    console.log("button 0 clicked");
+                });
+                $("#add_search_playlist1").on('click', function() {//for Search
+                   $("#add_search_playlist1").html("Added");
+                    console.log("button 1 clicked");
+                });
+                $("#add_search_playlist2").on('click', function() {//for Search
+                   $("#add_search_playlist2").html("Added");
+                    console.log("button 2 clicked");
+                });
+                $("#add_search_playlist3").on('click', function() {//for Search
+                   $("#add_search_playlist3").html("Added");
+                    console.log("button 3 clicked");
+                });
+                $("#add_search_playlist4").on('click', function() {//for Search
+                   $("#add_search_playlist4").html("Added");
+                    console.log("button 4 clicked");
                 });
            // });
         
