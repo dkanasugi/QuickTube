@@ -108,7 +108,7 @@ button:hover {
       <div id="messages"></div>
     </label>
     
-    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+    <p>By creating an account you agree to our <a href="privacyPolicy.html" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
     <div class="clearfix">
       <button type="button" class="cancelbtn" id="cancelbtn">Cancel</button>
@@ -141,10 +141,12 @@ button:hover {
              "password": $("[name=password]").val(),
            }
          }); 
+           window.location = "login.html";
          }else{
            $("#messages").append("Passwords do not match").css("color","red");
          }
-         window.location = "login.html";
+          
+
        });
     });
 </script>
