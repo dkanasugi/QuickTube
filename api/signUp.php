@@ -2,11 +2,15 @@
     include '../connect';
     
     $conn = getDatabaseConnection("QuickTube");
-    $namedParameters = array();
+
+    $uName = $_POST['username'];
+    $password = $_POST['password'];
     
-    $namedParameters[":username"] = $_POST['username'];
-    $namedParameters[":password"] = $_POST['password'];
-    
-    $sql = "SELECT * FROM user".
-            "WHERER username "
+    $sql = "INSERT INTO  `QuickTube`.`user` (
+                `username` ,
+                `password`
+            )
+            VALUES (
+                $uName,  $password
+            );"
 ?>
