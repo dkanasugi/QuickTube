@@ -51,7 +51,7 @@ footer{
     background-color: #00a2e8;
 }
 
-#add_pop_playlist0, #add_pop_playlist1, #add_pop_playlist2, #add_pop_playlist3, #add_pop_playlist4, #add_pop_playlist5, #add_search_playlist0,
+.addPlaylist, #add_pop_playlist0, #add_pop_playlist1, #add_pop_playlist2, #add_pop_playlist3, #add_pop_playlist4, #add_pop_playlist5, #add_search_playlist0,
 #add_search_playlist1, #add_search_playlist2, #add_search_playlist3, #add_search_playlist4, #add_search_playlist5, #commit, #signin, #account,
 #logoutButton, #mainButton{
     background-color: orange;
