@@ -1,12 +1,6 @@
-
-<<<<<<< HEAD
-.heading, #random, #search, #login, #keyword, #commit, #login,#account #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults, .right{
-=======
-
 .heading, #random, #search, #login, #keyword, #commit, #login, #signin, #searchResults, #hist, .mostPopular, #popularResults, .popularResults{
 
 
->>>>>>> 2ddc3cd391756aabbe078b91b14152184c188377
     display: flex;
     margin: auto;
     align-items: center;
