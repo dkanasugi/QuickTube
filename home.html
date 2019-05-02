@@ -98,7 +98,8 @@
              search_vid.push("https://youtube.com/embed/" + item.id.videoId); 
              //console.log("https://youtube.com/embed/" + item.id.videoId);
              $("[id=searchResults]").append(`<div class="col s3">
-          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`);
+          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>` + 
+          `<button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id.videoId}">Add to playlist</button>`);
         }//<button type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist${num++}">Add to playlist</button>
         num = 0;
         gapi.load("client");
@@ -122,10 +123,12 @@
           
           function showPopular(item) { 
                     pop_vid.push("https://youtube.com/embed/" + item.id);
-                     //console.log("https://youtube.com/embed/" + item.id);
+                     console.log("https://youtube.com/embed/" + item.id);
                      console.log(count);
                      $("[id=popularResults]").append(`<div class="col s3">
-                  <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`);
+                    <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>` + 
+                    `<button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id}">Add to playlist</button>`);
+                    //<button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id}" + item.id + "'>Add to playlist</button>
                 }//<button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist${count++}">Add to playlist</button>
                 count = 0;
           //$(document).ready(function() {
@@ -147,6 +150,10 @@
                 document.getElementById("add_search_playlist4").style.visibility='hidden'; 
                 document.getElementById("searchdisplay").style.visibility='hidden';
                 }
+                
+                $(document).on('click','.addPlaylist',function(){
+                   console.log($(this).attr("id")); 
+                });
                 
                 $("#login").on('click', function() {
                     window.location = "login.html";
