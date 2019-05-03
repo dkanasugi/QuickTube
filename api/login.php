@@ -13,7 +13,8 @@
     $stmt = $conn->prepare($sql);
     $stmt->execute($namedParameters);
     $record = $stmt->fetch();
-    if($_GET["password"] = $record["password"]){
+    
+    if($_GET["password"] == $record["password"]){
         $isAuthenticated = true;
     }else {
         $isAuthenticated = false;

@@ -4,7 +4,6 @@
 <head>
         <title>QuickTube Sign Up</title>
         <link rel="shortcut icon" href="quicktubeLogo.ico">
-        <link href="signUpStyles.css" rel="stylesheet" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -14,7 +13,6 @@
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
-
 /* Full-width input fields */
 input[type=text], input[type=password] {
   width: 100%;
@@ -24,17 +22,14 @@ input[type=text], input[type=password] {
   border: none;
   background: #f1f1f1;
 }
-
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
-
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
-
 /* Set a style for all buttons */
 button {
   background-color: #4CAF50;
@@ -46,35 +41,29 @@ button {
   width: 100%;
   opacity: 0.9;
 }
-
 button:hover {
   opacity:1;
 }
-
 /* Extra styles for the cancel button */
 .cancelbtn {
   padding: 14px 20px;
   background-color: #f44336;
 }
-
 /* Float cancel and signup buttons and add an equal width */
 .cancelbtn, .signupbtn {
   float: left;
   width: 50%;
 }
-
 /* Add padding to container elements */
 .container {
   padding: 16px;
 }
-
 /* Clear floats */
 .clearfix::after {
   content: "";
   clear: both;
   display: table;
 }
-
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
   .cancelbtn, .signupbtn {
@@ -91,7 +80,8 @@ button:hover {
     <hr>
     
     <label for="userName"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="userName" required>
+    <input type="text" placeholder="Enter Username" id="usernameInput" name="userName" required>
+    <span id="usernameMessage"></span><br>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
@@ -122,6 +112,24 @@ button:hover {
           window.location = "login.html"; 
        });
        
+       $("#usernameInput").on('change',function(){
+         $("#usernameMessage").html(" ");
+         $.ajax({
+           type:"GET",
+           url: "api/usernameCheck.php",
+           dataType: "json",
+           data:{"username": $("#usernameInput").val()},
+           success:function(data,stauts){
+             if(data == false){
+               $("#usernameMessage").html("Username is available").css("color","green");
+             }else {
+               $("#usernameMessage").html("Username is taken").css("color","red");
+             }
+           }
+           
+         });
+       });
+       
        $("#signupbtn").on('click',function(){
          $("#message").html("");
          console.log($("[name=userName]").val());
@@ -141,7 +149,6 @@ button:hover {
            $("#messages").append("Passwords do not match").css("color","red");
          }
           
-
        });
     });
 </script>
