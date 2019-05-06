@@ -154,15 +154,7 @@
         $(document).on('click', '.addPlaylist', function() {
             console.log($(this).attr("id"));
             console.log("hello");
-            $.ajax({
-                type: "POST",
-                url: "api/addPlaylist.php",
-                dataType: "json",
-                data: {
-                    "url": $(this).attr("id"),
-                    "username": ""
-                }
-            });
+           window.location = "login.html";
         });
 
         $("#login").on('click', function() {
