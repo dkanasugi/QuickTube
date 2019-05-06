@@ -166,7 +166,7 @@
                         url: "api/addHistory.php",
                         dataType: "json",
                         data: {
-                            'searches': $("#keyword").val(),
+                            'search': $("#keyword").val(),
                             'username': "",
                             'id': ""
                         },

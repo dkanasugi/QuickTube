@@ -2,7 +2,7 @@
     include '../connect.php';
     
     $conn = getDatabaseConnection("QuickTube");
-    $url = $_POST['url'];
+    $searches = $_POST['searches'];
     $username = $_POST['username'];
     $sql = "INSERT INTO  `history` (
                 `searches` , `username`, `id`,
