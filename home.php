@@ -158,6 +158,25 @@
                     });
                 });
                 
+                $(document).on('click','.commit',function(){
+                    // console.log($(this).attr("id")); 
+                    // console.log("hello");
+                    $.ajax({
+                        type: "POST",
+                        url: "api/addHistory.php",
+                        dataType: "json",
+                        data: {
+                            'searches': $("#keyword").val(),
+                            'username': "",
+                            'id': ""
+                        },
+                        success: function(data){
+                            console.log("#keyword");
+                            console.log("Success keyword");
+                        }
+                    });
+                });
+                
                 $("#logoutButton").on('click', function() {
                     window.location = "logout.php";
                     //$("#login").html("Log Out");

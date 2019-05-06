@@ -2,7 +2,7 @@
 
     include '../connect.php';
     
-    $conn=getDatabaseConnection("ottermart");
+    $conn=getDatabaseConnection("user");
     $np = array();
     $np[':username'] = $_GET['username'];
     
