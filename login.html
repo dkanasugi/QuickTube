@@ -85,6 +85,7 @@
           });
           
           $("#loginButton").on('click',function(){
+              console.log("Working");
              $.ajax({
                  type:"GET",
                  url:"api/login.php",
@@ -94,12 +95,13 @@
                      "password": $("[name=password]").val()
                  },
                  success:function(data,status){
-                     if(data.isAuthenticated){
-                         window.location = "home.php";
-                     }else{
-                        $("#message").html("Incorrect username or password");
-                        $("#message").removeClass("open-hidden");
-                     }
+                     window.location = "home.php";
+                    //  if(data.isAuthenticated){
+                    //      window.location = "home.php";
+                    //  }else{
+                    //     $("#message").html("Incorrect username or password");
+                    //     $("#message").removeClass("open-hidden");
+                    //  }
                  }
              }); 
           });
