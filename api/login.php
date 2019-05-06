@@ -21,8 +21,7 @@
     }
     
     if ($isAuthenticated) {
-        $_SESSION["username"] = $record["username"];
-        $_SESSION["isAdmin"] = $record["is_admin"];
+        $_SESSION["userId"] = $record["userId"];
     }
   
     header("Access-Control-Allow-Origin: *");

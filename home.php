@@ -2,9 +2,10 @@
 
      session_start();
     
-    if(!isset($_SESSION['username'])){
+    if(!isset($_SESSION['userId'])){
         header("Location:login.html");
     }
+    
     // if(!session_id()) session_start();
     // $currentUser = $_SESSION['username'];
     // echo $currentUser; //output new value

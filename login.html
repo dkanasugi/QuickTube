@@ -2,36 +2,14 @@
 <html lang="en">
 
 <head>
-
+    <title>QuickTube Login</title>
+    <link href="styles/LogInStyles.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="shortcut icon" href="quicktubeLogo.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="img/favicon.png">
-
-    <title>QuickTube Login</title>
-
-    <!-- Icons -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/simple-line-icons.css" rel="stylesheet">
-
-    <!-- Main styles for this application -->
-    <link href="styles.min.css" rel="stylesheet">
-
-    <!-- Styles required by this views -->
-    <style>
-        html,
-        body,
-        main {
-            width: 100%;
-            height: 100%;
-        }
-
-        .open-hidden {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -85,7 +63,6 @@
           });
           
           $("#loginButton").on('click',function(){
-              console.log("Working");
              $.ajax({
                  type:"GET",
                  url:"api/login.php",
@@ -95,13 +72,12 @@
                      "password": $("[name=password]").val()
                  },
                  success:function(data,status){
-                     window.location = "home.php";
-                    //  if(data.isAuthenticated){
-                    //      window.location = "home.php";
-                    //  }else{
-                    //     $("#message").html("Incorrect username or password");
-                    //     $("#message").removeClass("open-hidden");
-                    //  }
+                     if(data.isAuthenticated){
+                         window.location = "home.php";
+                     }else{
+                        $("#message").html("Incorrect username or password");
+                        $("#message").removeClass("open-hidden");
+                     }
                  }
              }); 
           });
