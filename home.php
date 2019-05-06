@@ -1,10 +1,13 @@
 <?php
-    session_start();
     
     if(!isset($_SESSION['username'])){
         header("Location:login.html");
     }
+    // if(!session_id()) session_start();
+    // $currentUser = $_SESSION['username'];
+    // echo $currentUser; //output new value
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -94,7 +97,7 @@
         
         function showURL(item) {
              search_vid.push("https://youtube.com/embed/" + item.id.videoId); 
-             //console.log("https://youtube.com/embed/" + item.id.videoId);
+             console.log("https://youtube.com/embed/" + item.id.videoId);
              $("[id=searchResults]").append(`<div class="col s3">
           <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           <button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id.videoId}">Add to playlist</button></div>`);
@@ -142,7 +145,17 @@
                 }
                 
                 $(document).on('click','.addPlaylist',function(){
-                   console.log($(this).attr("id")); 
+                    console.log($(this).attr("id")); 
+                    console.log("hello");
+                    $.ajax({
+                        type: "POST",
+                        url: "api/addPlaylist.php",
+                        dataType: "json",
+                        data: {
+                            "url": $(this).attr("id"),
+                            "username": ""
+                        }
+                    });
                 });
                 
                 $("#logoutButton").on('click', function() {
@@ -150,11 +163,11 @@
                     //$("#login").html("Log Out");
                 });
                
-           // });
-        
+
         document.getElementById("account").onclick = function(){
             location.href = "account.php";
         }
+
     </script>
     
 
