@@ -12,13 +12,5 @@
     
     $np = array();
     $np[':userId'] = $_SESSION['userId'];
-    $sql = "SELECT username, search FROM user NATURAL JOIN history WHERE user.userId = :userId";
-    
-    //$sql = "SELECT search FROM history where userId = :userId";
-    
-    $stmt= $conn->prepare($sql);
-    $stmt->execute($np);
-    $records=$stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    echo json_encode($records);
-?>
+    $sql = "SELECT username, search FROM user inner join history where user.userId = :userId";
+    git 

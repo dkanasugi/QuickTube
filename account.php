@@ -116,7 +116,7 @@
                    data.forEach(function(key){
                        //$("#playlist").append(key['url'] );
                        $("#playlist").append(`<div class="col s3"><iframe height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                       </iframe><button input type="submit" class="deleteBttn" id="${key['url']}">Delete</button></div><br>`);
+                       </iframe><button type="button" class="deleteBttn" id="${key['url']}">Delete</button></div><br>`);
                    });
                }
            })
@@ -129,9 +129,15 @@
               type:"POST",
               url:"api/deleteVideo.php",
               dataType: "json",
-              data:{'url': $(this).attr("id")}
+              data:{'url': $(this).attr("id")},
+              success:function(data,status){
+                  if(data.delete){
+                      console.log("complete");
+                  }else{
+                      console.log("error");
+                  }
+              }
            });
-           location.href = "account.php";
         });
         
     </script>
