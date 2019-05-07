@@ -68,6 +68,7 @@
                 },
                 success:function(data){
                     console.log("Success"); 
+                    location.href = "account.php";
                 },
                 error:function(data){
                     console.log("Error");
@@ -133,6 +134,7 @@
               success:function(data,status){
                   if(data.delete){
                       console.log("complete");
+                      location.href = "account.php";
                   }else{
                       console.log("error");
                   }
