@@ -53,10 +53,10 @@
             </div>
         </div>
     </div>
-    <div id="searchdisplay">Search Result</div>
+    <h1 id="searchdisplay">Search Result</h1>
     <div id="searchResults"></div>
         
-    <div>Most Popular</div>
+    <h1>Most Popular</h1>
     <div id="popularResults"></div>
         
     <script src="https://apis.google.com/js/api.js"></script>

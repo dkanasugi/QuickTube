@@ -40,10 +40,10 @@
             </div>
         </div>
         
-        <div id = "user"></div>
-        <h1>History</h1>
+        <h1 id = "user"></h1>
+        <h2>History</h2>
         <div id="history"></div>
-        <h1>Playlist</h1>
+        <h2>Playlist</h2>
         <div id="playlist"></div>
         <h2>Edit Password</h2>
         <div class = "changePass">
