@@ -81,12 +81,10 @@
                        $("#history").append(key['search'] + " | ");
                    });
                }
-           })
+           });
+           
         });
         
-        $(document).on('click',".searchLink",function(){
-           console.log($(this).attr("id")); 
-        });
         
     </script>
 </html>

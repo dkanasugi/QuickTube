@@ -10,15 +10,21 @@
     include '../connect.php';
     $conn = getDatabaseConnection("QuickTube");
     
-    $np = array();
-    $np[':userId'] = $_SESSION['userId'];
-    $np[':url'] = $_POST['url'];
+    $userId = $_SESSION['userId'];
+    $url = $_POST['url'];
     
-    $sql = "INSERT INTO playlist (url,userId) values (:url,:userId)";
+    $sql = "INSERT INTO playlist (url,userId) values ('$url','$url')";
     
     $stmt= $conn->prepare($sql);
-    $stmt->execute($np);
-    $records=$stmt->fetchAll();
+    $stmt->execute();
     
-    echo json_encode($records);
+    if($_POST['url'] == $records['url']){
+        $successful = false;
+    }else{
+        $successful = true;
+    }
+    
+    header("Access-Control-Allow-Origin: *");
+    header("Content-Type: application/json");
+    echo json_encode(array("successful" => $successful));
 ?>
