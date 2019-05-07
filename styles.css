@@ -61,3 +61,7 @@ footer{
 .logo, img{
     padding-left: 5px;
 }
+
+#playlist_Header{
+    border-top: black 100px;
+}
