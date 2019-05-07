@@ -49,8 +49,8 @@
         var userName = document.getElementById("user");
         var titleName = document.getElementById("title");
     
-        userName.innerHTML = "Daichi";
-        titleName.innerHTML = "Daichi's Account";
+        // userName.innerHTML = "Daichi";
+        // titleName.innerHTML = "Daichi's Account";
         
         document.getElementById("mainButton").onclick = function(){
             location.href = "home.php";
@@ -58,6 +58,20 @@
         
         $("#logoutButton").on('click',function(){
            window.location = "logout.php"; 
+        });
+        
+        $(document).ready(function(){
+           $.ajax({
+               type:"GET",
+               url:"api/accountSetting.php",
+               dataType:"json",
+               success:function(data,status){
+                   data.forEach(function(key){
+                      userName.innerHTML = key['username'];
+                   titleName.innerHTML = key['username'] + "'s Account"; 
+                   });
+               }
+           }) ;
         });
         
     </script>
