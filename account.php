@@ -91,16 +91,22 @@
                success:function(data,status){
                    data.forEach(function(key){
                        //$("#playlist").append(key['url'] );
-                       $("#playlist").append(`<div class="col s3"><iframe height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>`);
-                       //`<div class="col s3"><iframe width="100%" height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`
+                       $("#playlist").append(`<div class="col s3"><iframe height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                       </iframe><button type="button" class="deleteBttn" id="${key['url']}">Delete</button></div><br>`);
                    });
                }
            })
            
         });
         
-        $(document).on('click',".searchLink",function(){
-           console.log($(this).attr("id")); 
+        $(document).on('click',".deleteBttn",function(){
+            console.log($(this).attr("id"))
+           $.ajax({
+              type:"POST",
+              url:"api/deleteVideo.php",
+              dataType: "json",
+              data:{'url': $(this).attr("id")}
+           });
         });
         
     </script>
