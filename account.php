@@ -40,17 +40,15 @@
             </div>
         </div>
         
-        <p>Welcome</p>
-        <div id = "user"> </div>
+        <div id = "user"></div>
+        
+        <div id="history"></div>
     </body>
     <script>
     
         //Need an AJAX call to retrieve data from php to the database
         var userName = document.getElementById("user");
         var titleName = document.getElementById("title");
-    
-        // userName.innerHTML = "Daichi";
-        // titleName.innerHTML = "Daichi's Account";
         
         document.getElementById("mainButton").onclick = function(){
             location.href = "home.php";
@@ -61,17 +59,33 @@
         });
         
         $(document).ready(function(){
-           $.ajax({
-               type:"GET",
-               url:"api/accountSetting.php",
-               dataType:"json",
-               success:function(data,status){
-                   data.forEach(function(key){
-                      userName.innerHTML = key['username'];
-                   titleName.innerHTML = key['username'] + "'s Account"; 
+            $.ajax({
+                type:"GET",
+                url:"api/accountSetting.php",
+                dataType:"json",
+                success:function(data,status){
+                    data.forEach(function(key){
+                        userName.innerHTML = "Welcome back, " + key['username'];
+                        titleName.innerHTML = (key['username']).toUpperCase() + "'s ACCOUNT"; 
                    });
                }
-           }) ;
+           });
+           
+           $.ajax({
+               type:"GET",
+               url:"api/getSearch.php",
+               dataType:"json",
+               success:function(data,status){
+                   $("#history").append("Previous Searches: " + " ");
+                   data.forEach(function(key){
+                       $("#history").append(key['search'] + " | ");
+                   });
+               }
+           })
+        });
+        
+        $(document).on('click',".searchLink",function(){
+           console.log($(this).attr("id")); 
         });
         
     </script>

@@ -12,13 +12,12 @@
     
     $np = array();
     $np[':userId'] = $_SESSION['userId'];
-    $np[':url'] = $_POST['url'];
     
-    $sql = "INSERT INTO playlist (url,userId) values (:url,:userId)";
+    $sql = "SELECT search FROM history where userId = :userId";
     
     $stmt= $conn->prepare($sql);
     $stmt->execute($np);
-    $records=$stmt->fetchAll();
+    $records=$stmt->fetchAll(PDO::FETCH_ASSOC);
     
     echo json_encode($records);
 ?>
