@@ -73,10 +73,7 @@
                     function(err) { console.error("Error loading GAPI client for API", err); });
         }
         
-        var search_vid = [];
-        var num = 0;
         function execute_Search() {
-            search_vid = []
             var $searchQuery = document.getElementById("keyword").value;
             return gapi.client.youtube.search.list({
                     "part": "snippet",
@@ -85,67 +82,48 @@
                 })
                 .then(function(response) {
                         document.getElementById("searchResults").innerHTML += "<br>";
-                        console.log(response.result.items);
                         $("#searchResults").html("");
                         response.result.items.forEach(showURL);
-                        num = 0;
                         visible();
                     },
                     function(err) { console.error("Execute error", err); });
         }
         
         function showURL(item) {
-             search_vid.push("https://youtube.com/embed/" + item.id.videoId); 
-             console.log("https://youtube.com/embed/" + item.id.videoId);
              $("[id=searchResults]").append(`<div class="col s3">
           <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id.videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           <button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id.videoId}">Add to playlist</button></div>`);
-        }//<button type="button" class="btn btn-primary mb1 bg-orange" id="add_search_playlist${num++}">Add to playlist</button>
-        num = 0;
+        }
+        
         gapi.load("client");
         
-        var pop_vid = [];
-        var count = 0;
           function execute_Popular() {
-              pop_vid = [];
             return gapi.client.youtube.videos.list({
               "part": "snippet",
               "chart": "mostPopular",
               "regionCode": "US"
             })
                 .then(function(response) {
-                        console.log(response.result.items[0].id);
                         response.result.items.forEach(showPopular);
-                        count = 0;
                       },
                       function(err) { console.error("Execute error", err); });
           }
           
           function showPopular(item) { 
-                    pop_vid.push("https://youtube.com/embed/" + item.id);
-                     console.log("https://youtube.com/embed/" + item.id);
-                     console.log(count);
                      $("[id=popularResults]").append(`<div class="col s3">
                     <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${item.id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     <button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id}">Add to playlist</button></div>` );
-                    //<button type="button" class="addPlaylist" id="https://www.youtube.com/embed/${item.id}" + item.id + "'>Add to playlist</button>
-                }//<button type="button" class="btn btn-primary mb1 bg-orange" id="add_pop_playlist${count++}">Add to playlist</button>
-                count = 0;
-          //$(document).ready(function() {
+                }
+                
+          
                 function visible(){
-                //document.getElementById("myP").style.visibility = "visible";
-                 
-                document.getElementById("searchdisplay").style.visibility = "visible";
+                    document.getElementById("searchdisplay").style.visibility = "visible";
                 }
                 function hidden(){
-                //document.getElementById("myP").style.visibility = "visible";
-                 
-                document.getElementById("searchdisplay").style.visibility='hidden';
+                    document.getElementById("searchdisplay").style.visibility='hidden';
                 }
                 
                 $(document).on('click','.addPlaylist',function(){
-                    console.log($(this).attr("id")); 
-                    console.log("hello");
                     $.ajax({
                         type: "POST",
                         url: "api/addPlaylist.php",
@@ -157,9 +135,6 @@
                 });
                 
                 $(document).on('click','#commit',function(){
-                    // console.log($(this).attr("id")); 
-                    // console.log("hello");
-                    console.log("search button pressed");
                     $.ajax({
                         type: "POST",
                         url: "api/addHistory.php",
@@ -168,21 +143,15 @@
                             'search': $("#keyword").val(),
                         },
                         success: function(data){
-                            console.log("#keyword");
-                            console.log("Success keyword");
                             execute_Search();
                         },
-                        
                         error: function(data){
-                            console.log("Error has occured");
-                            console.log(data);
                         }
                     });
                 });
                 
                 $("#logoutButton").on('click', function() {
                     window.location = "logout.php";
-                    //$("#login").html("Log Out");
                 });
                
 
