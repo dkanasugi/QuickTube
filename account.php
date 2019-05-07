@@ -45,12 +45,36 @@
         <div id="history"></div>
         <h1>Playlist</h1>
         <div id="playlist"></div>
+        <h2>Edit Password</h2>
+        <div class = "changePass">
+            <input type="text" id="newPass" holder="enter new password"></div>
+            <button type="button" class="btn btn-primary" id="passButton">Change</button>
+        </div>
     </body>
     <script>
     
         //Need an AJAX call to retrieve data from php to the database
         var userName = document.getElementById("user");
         var titleName = document.getElementById("title");
+        
+         $(document).on('click','#passButton',function(){
+             console.log("button clicked");
+            $.ajax({
+                type:"POST",
+                url:"api/editPassword.php",
+                dataType:"json",
+                data:{
+                    'password': $("#newPass").val(),
+                },
+                success:function(data){
+                    console.log("Success"); 
+                },
+                error:function(data){
+                    console.log("Error");
+                    console.log(data);
+                }
+               });
+           });
         
         document.getElementById("mainButton").onclick = function(){
             location.href = "home.php";
