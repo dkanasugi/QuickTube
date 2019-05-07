@@ -1,7 +1,7 @@
 
     <!--AIzaSyBZHX6SuAgh2zbwQ9Og3HFA3m3VaMf-Z2k-->
-<?php
-$apiKey = "AIzaSyBZHX6SuAgh2zbwQ9Og3HFA3m3VaMf-Z2k";
+<!--<?php-->
+<!--$apiKey = "AIzaSyBZHX6SuAgh2zbwQ9Og3HFA3m3VaMf-Z2k";-->
 
 /*
 curl    -X "GET" "https://api.spotify.com/v1/browse/featured-playlists" 
@@ -20,33 +20,33 @@ curl -X "GET" "https://api.spotify.com/v1/browse/new-releases?country=SE&limit=1
 */
 
 //step1
-$cSession = curl_init();
+<!--$cSession = curl_init();-->
 
 //step2
-curl_setopt($cSession,CURLOPT_URL,"https://api.spotify.com/v1/browse/new-releases?country=SE&limit=10&offset=5");
-curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
-curl_setopt($cSession,CURLOPT_HEADER, false);
-curl_setopt($cSession,CURLOPT_HTTPHEADER, array(
-    "Accept: application/json",
-    "Content-Type: application/json",
-    "Authorization: Bearer $apiKey"
-));
+<!--curl_setopt($cSession,CURLOPT_URL,"https://api.spotify.com/v1/browse/new-releases?country=SE&limit=10&offset=5");-->
+<!--curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);-->
+<!--curl_setopt($cSession,CURLOPT_HEADER, false);-->
+<!--curl_setopt($cSession,CURLOPT_HTTPHEADER, array(-->
+<!--    "Accept: application/json",-->
+<!--    "Content-Type: application/json",-->
+<!--    "Authorization: Bearer $apiKey"-->
+<!--));-->
 
 //step3
-$results = curl_exec($cSession);
-$errno = curl_errno($cSession);
+<!--$results = curl_exec($cSession);-->
+<!--$errno = curl_errno($cSession);-->
 
-if ($errno) {
-    var_dump($errno);
-    curl_close($cSession);
-    exit();
-}
+<!--if ($errno) {-->
+<!--    var_dump($errno);-->
+<!--    curl_close($cSession);-->
+<!--    exit();-->
+<!--}-->
 
 //step4
-curl_close($cSession);
+<!--curl_close($cSession);-->
 
 //step5
-$musicData = json_decode($results);
+<!--$musicData = json_decode($results);-->
 //var_dump($musicData->albums);
 // var_dump($musicData->albums->href);
 
@@ -58,4 +58,4 @@ $musicData = json_decode($results);
 // echo $results;
 
 
-?>
+<!--?>-->
