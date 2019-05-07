@@ -13,7 +13,7 @@
     $userId = $_SESSION['userId'];
     $url = $_POST['url'];
     
-    $sql = "INSERT INTO playlist (url,userId) values ('$url','$url')";
+    $sql = "INSERT INTO playlist (url,userId) values ('$url','$userId')";
     
     $stmt= $conn->prepare($sql);
     $stmt->execute();
