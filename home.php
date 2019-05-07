@@ -151,8 +151,7 @@
                         url: "api/addPlaylist.php",
                         dataType: "json",
                         data: {
-                            "url": $(this).attr("id"),
-                            "username": ""
+                            "url": $(this).attr("id")
                         }
                     });
                 });
