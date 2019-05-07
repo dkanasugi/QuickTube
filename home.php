@@ -44,7 +44,7 @@
         <div class = "center">
             <div id="search">
                 <input type="text" id="keyword">&nbsp</input>
-                <button type="button" onclick="execute_Search()" class="btn btn-primary" id="commit">Search</button>
+                <button type="button" class="btn btn-primary" id="commit">Search</button>
             </div>
         </div>
         <div class ="right">
@@ -161,21 +161,26 @@
                     });
                 });
                 
-                $(document).on('click','.commit',function(){
+                $(document).on('click','#commit',function(){
                     // console.log($(this).attr("id")); 
                     // console.log("hello");
+                    console.log("search button pressed");
                     $.ajax({
                         type: "POST",
                         url: "api/addHistory.php",
                         dataType: "json",
                         data: {
                             'search': $("#keyword").val(),
-                            'username': "",
-                            'id': ""
                         },
                         success: function(data){
                             console.log("#keyword");
                             console.log("Success keyword");
+                            execute_Search();
+                        },
+                        
+                        error: function(data){
+                            console.log("Error has occured");
+                            console.log(data);
                         }
                     });
                 });
