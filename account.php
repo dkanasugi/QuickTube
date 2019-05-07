@@ -50,6 +50,7 @@
             <input type="text" id="newPass" holder="enter new password"></div>
             <button type="button" class="btn btn-primary" id="passButton">Change</button>
         </div>
+        <h3 id="alert"></h3>
     </body>
     <script>
     
@@ -68,7 +69,7 @@
                 },
                 success:function(data){
                     console.log("Success"); 
-                    location.href = "account.php";
+                    $("#alert").append("Password changed");
                 },
                 error:function(data){
                     console.log("Error");
