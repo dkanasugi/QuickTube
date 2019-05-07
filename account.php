@@ -26,7 +26,7 @@
             </div>
             <div class = "center">
                 <div id = "text">
-                    <h1 text-align="center">Playlist</h1>
+                    <h1 text-align="center">Account Settings</h1>
                 </div>
             </div>
             <div class ="right">
@@ -41,8 +41,10 @@
         </div>
         
         <div id = "user"></div>
-        
+        <h1>History</h1>
         <div id="history"></div>
+        <h1>Playlist</h1>
+        <div id="playlist"></div>
     </body>
     <script>
     
@@ -81,10 +83,25 @@
                        $("#history").append(key['search'] + " | ");
                    });
                }
-           });
+           })
+           $.ajax({
+               type:"GET",
+               url:"api/getPlaylists.php",
+               dataType:"json",
+               success:function(data,status){
+                   data.forEach(function(key){
+                       //$("#playlist").append(key['url'] );
+                       $("#playlist").append(`<div class="col s3"><iframe height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>`);
+                       //`<div class="col s3"><iframe width="100%" height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`
+                   });
+               }
+           })
            
         });
         
+        $(document).on('click',".searchLink",function(){
+           console.log($(this).attr("id")); 
+        });
         
     </script>
 </html>
