@@ -12,7 +12,7 @@
     
     $np = array();
     $np[':userId'] = $_SESSION['userId'];
-    $sql = "SELECT username, search FROM user inner join history where user.userId = :userId";
+    $sql = "SELECT username, search FROM user NATURAL JOIN history WHERE user.userId = :userId";
     
     //$sql = "SELECT search FROM history where userId = :userId";
     
