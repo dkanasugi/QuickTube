@@ -92,7 +92,7 @@
                    data.forEach(function(key){
                        //$("#playlist").append(key['url'] );
                        $("#playlist").append(`<div class="col s3"><iframe height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                       </iframe><button type="button" class="deleteBttn" id="${key['url']}">Delete</button></div><br>`);
+                       </iframe><button input type="submit" class="deleteBttn" id="${key['url']}">Delete</button></div><br>`);
                    });
                }
            })
@@ -107,6 +107,7 @@
               dataType: "json",
               data:{'url': $(this).attr("id")}
            });
+           location.href = "account.php";
         });
         
     </script>
