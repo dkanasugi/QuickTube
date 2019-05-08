@@ -47,7 +47,7 @@
             <div id="login">
                 <button type="button" class="btn btn-primary" id="logoutButton">Log Out</button>
             </div>
-
+            &nbsp
             <div id="account">
                 <button type="button" class="btn btn-primary" id="account">Account setting</button>
             </div>
@@ -59,7 +59,7 @@
     <h1>Most Popular</h1>
     <div id="popularResults"></div>
         
-    <script src="https://apis.google.com/js/api.js"></script>
+<script src="https://apis.google.com/js/api.js"></script>
 
 
     <script>
@@ -164,6 +164,6 @@
 
 </body>
     
-<footer>QuickTube&copy by Antonio, Daichi, Maximillian, and Ricky</footer>
+<footer><br>QuickTube&copy by Antonio, Daichi, Maximillian, and Ricky</footer>
 
 </html>

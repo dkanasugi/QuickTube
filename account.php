@@ -10,7 +10,7 @@
     <head>
         <title id="title"> </title>
         <link rel="shortcut icon" href="quicktubeLogo.ico">
-        <link href="styles.css" rel="stylesheet" type="text/css" />
+        <link href="styles/accountStyles.css" rel="stylesheet" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -18,7 +18,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     </head>
     <body>
-            <div class="heading" >
+        <div class="heading" >
             <div class = "left">
                 <div id="logo">
                     <img src="quicktubeLogo.png" width="50" height="50" alt="qt"></img>
@@ -26,7 +26,7 @@
             </div>
             <div class = "center">
                 <div id = "text">
-                    <h1 text-align="center">Account Settings</h1>
+                    <div id = "textCenter">Account Settings</div>
                 </div>
             </div>
             <div class ="right">
@@ -39,19 +39,21 @@
                 </div>
             </div>
         </div>
-        
-        <h1 id = "user"></h1>
-        <h2>History</h2>
-        <div id="history"></div>
-        <h2 id= "playlistHeader">Playlist</h2>
-        <div id="playlist"></div>
-        <h2>Edit Password</h2>
-        <div class = "changePass">
-            <input type="text" id="newPass" holder="enter new password"></div>
-            <button type="button" class="btn btn-primary" id="passButton">Change</button>
+        <div class ="mainBody">
+            <div id = "user"></div>
+            <div id = "historyFont">History</div>
+            <div id="history"></div><br>
+            <div id= "playlistHeader">Playlist</div>
+            <div id="playlist"></div>
+            <div id = "passHeader">Edit Password</div>
+            <div class = "changePass">
+                <input type="text" id="newPass" placeholder=" enter new password"></input> &nbsp
+                <button type="button" class="btn btn-primary" id="passButton">Change</button>
+            </div>
+            <h3 id="alert"></h3>
         </div>
-        <h3 id="alert"></h3>
     </body>
+    <footer class = "bottomPart"><br>QuickTube&copy by Antonio, Daichi, Maximillian, and Ricky</footer>
     <script>
     
         //Need an AJAX call to retrieve data from php to the database
