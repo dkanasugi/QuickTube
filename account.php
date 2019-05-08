@@ -120,12 +120,12 @@
                dataType:"json",
                success:function(data,status){
                    data.forEach(function(key){
-                       if(count  == 3){
+                       if(count  == 5){
                            $("#playlist").append(`<tr>`);
                            count = 0;
                        }
                        $("#playlist").append(`<td><iframe height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                       </iframe><br><button type="button" class="deleteBttn" id="${key['url']}">Delete</button></td>`);
+                       </iframe><br><button type="button" class="deleteBttn" id="${key['url']}">Remove from playlist</button></td>`);
                        count+=1;
                    });
                 }
