@@ -112,6 +112,7 @@
                    });
                }
            })
+           
            $.ajax({
                type:"GET",
                url:"api/getPlaylists.php",
@@ -122,9 +123,8 @@
                        $("#playlist").append(`<div class="col s3"><iframe height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
                        </iframe><button type="button" class="deleteBttn" id="${key['url']}">Delete</button></div><br>`);
                    });
-               }
+                }
            })
-           
         });
         
         $(document).on('click',".deleteBttn",function(){
@@ -144,6 +144,5 @@
               }
            });
         });
-        
     </script>
 </html>

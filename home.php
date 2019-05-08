@@ -60,8 +60,6 @@
     <div id="popularResults"></div>
         
 <script src="https://apis.google.com/js/api.js"></script>
-
-
     <script>
         function loadClient() {
             gapi.client.setApiKey("AIzaSyAWtu8p_Ve4s6hbXbj4GM3ErXEgB1fkMZY");
@@ -160,8 +158,6 @@
         }
 
     </script>
-    
-
 </body>
     
 <footer><br>QuickTube&copy by Antonio, Daichi, Maximillian, and Ricky</footer>

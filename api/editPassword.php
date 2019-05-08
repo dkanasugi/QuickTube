@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    //Auto
+    //Auth
     if (!isset($_SESSION['userId'])) {
         http_response_code(401);
         exit();

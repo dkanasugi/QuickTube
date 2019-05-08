@@ -19,6 +19,7 @@ require __DIR__ . '../../vendor/autoload.php';$htmlBody = <<<END
   <input type="submit" value="Search">
 </form>
 END;
+
 // This code will execute if the user entered a search query in the form
 // and submitted the form. Otherwise, the page displays the form above.
 if (isset($_GET['q']) && isset($_GET['maxResults'])) {
@@ -33,6 +34,7 @@ if (isset($_GET['q']) && isset($_GET['maxResults'])) {
   // Define an object that will be used to make all API requests.
   $youtube = new Google_Service_YouTube($client);
   $htmlBody = '';
+  
   try {
     // Call the search.list method to retrieve results matching the specified
     // query term.
@@ -40,9 +42,11 @@ if (isset($_GET['q']) && isset($_GET['maxResults'])) {
       'q' => $_GET['q'],
       'maxResults' => $_GET['maxResults'],
     ));
+    
     $videos = '';
     $channels = '';
     $playlists = '';
+    
     // Add each result to the appropriate list, and then display the lists of
     // matching videos, channels, and playlists.
     foreach ($searchResponse['items'] as $searchResult) {
@@ -61,6 +65,7 @@ if (isset($_GET['q']) && isset($_GET['maxResults'])) {
           break;
       }
     }
+    
     $htmlBody .= <<<END
     <h3>Videos</h3>
     <ul>$videos</ul>

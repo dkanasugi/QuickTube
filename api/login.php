@@ -1,6 +1,7 @@
 <?php
     include '../connect.php';
     session_start();
+    
     // Get Data from DB
     $conn = getDatabaseConnection("QuickTube");
     $namedParameters = array();
