@@ -44,7 +44,7 @@
             <div id = "historyFont">History</div>
             <div id="history"></div><br>
             <div id= "playlistHeader">Playlist</div>
-            <div id="playlist"></div>
+            <div><table id="playlist"></table></div>
             <div id = "passHeader">Edit Password</div>
             <div class = "changePass">
                 <input type="text" id="newPass" placeholder=" enter new password"></input> &nbsp
@@ -111,16 +111,22 @@
                        $("#history").append(key['search'] + " | ");
                    });
                }
-           })
+           });
+           
+           var count = 0;
            $.ajax({
                type:"GET",
                url:"api/getPlaylists.php",
                dataType:"json",
                success:function(data,status){
                    data.forEach(function(key){
-                       //$("#playlist").append(key['url'] );
-                       $("#playlist").append(`<div class="col s3"><iframe height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                       </iframe><button type="button" class="deleteBttn" id="${key['url']}">Delete</button></div><br>`);
+                       if(count  == 3){
+                           $("#playlist").append(`<tr>`);
+                           count = 0;
+                       }
+                       $("#playlist").append(`<td><iframe height="auto" src="${key['url']}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                       </iframe><br><button type="button" class="deleteBttn" id="${key['url']}">Delete</button></td>`);
+                       count+=1;
                    });
                }
            })
