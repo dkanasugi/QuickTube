@@ -76,3 +76,11 @@ footer{
     border-top: black 100px;
     border-top-style: solid;
 }
+
+.heading{
+    background-color:  #3298E3;
+}
+
+#text{
+    color: white;
+}

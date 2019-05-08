@@ -44,7 +44,7 @@
             <div id = "historyFont">History</div>
             <div id="history"></div><br>
             <div id= "playlistHeader">Playlist</div>
-            <div><table id="playlist"></table></div>
+            <div><table id="playlist"></table></div><br>
             <div id = "passHeader">Edit Password</div>
             <div class = "changePass">
                 <input type="text" id="newPass" placeholder=" enter new password"></input> &nbsp
