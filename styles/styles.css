@@ -58,6 +58,16 @@ footer{
     background-color: orange;
 }
 
+.addPlaylist, .deleteBttn {
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
 .logo, img{
     padding-left: 5px;
 }
