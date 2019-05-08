@@ -1,6 +1,6 @@
-Project Name: QuickTube <br>
-Team Members: Ricky Baca, Antonio Felix, Daichi Kanasugi, Maxillian Renga <br>
-Class: CST 363 Internet Programming <br>
+<h1>Project Name: QuickTube </h1><br>
+<h2>Team Members: Ricky Baca, Antonio Felix, Daichi Kanasugi, Maxillian Renga </h2><br>
+<h2>Class: CST 363 Internet Programming </h2><br>
 
 <b>Project Description</b><br>
 This project is a mini video player that uses Google's YouTube API. It retrieves popular and searched videos
