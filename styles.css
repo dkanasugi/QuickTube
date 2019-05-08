@@ -64,4 +64,5 @@ footer{
 
 #playlist_Header{
     border-top: black 100px;
+    border-top-style: solid;
 }
