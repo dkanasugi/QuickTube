@@ -15,6 +15,13 @@
     $stmt->execute($namedParameters);
     $record = $stmt->fetch();
     
+    if($record['username'] == "admin"){
+        $isAdmin = true;
+    }else {
+        $isAdmin = false;
+    }
+    
+    
     if($_GET["password"] == $record["password"]){
         $isAuthenticated = true;
     }else {
@@ -27,5 +34,5 @@
   
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json");
-    echo json_encode(array("isAuthenticated" => $isAuthenticated));
+    echo json_encode(array("isAuthenticated" => $isAuthenticated, "isAdmin" => $isAdmin));
 ?>

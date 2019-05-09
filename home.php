@@ -5,6 +5,7 @@
     if(!isset($_SESSION['userId'])){
         header("Location:login.html");
     }
+    
 ?>
 
 <!DOCTYPE html>

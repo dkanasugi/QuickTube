@@ -72,7 +72,9 @@
                      "password": $("[name=password]").val()
                  },
                  success:function(data,status){
-                     if(data.isAuthenticated){
+                     if(data.isAuthenticated && data.isAdmin){
+                        window.location = "adminDashboard.php";    
+                     }else if(data.isAuthenticated){
                          window.location = "home.php";
                      }else{
                         $("#message").html("Incorrect username or password");
