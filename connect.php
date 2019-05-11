@@ -16,7 +16,7 @@ function getDatabaseConnection(){
     // $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     
     $host = "localhost";
-    $dbname = "QuickTube";
+    $dbname = "qs4tci11k6kefzpz";
     $username = "dkanasugi";
     $password = "";
     
