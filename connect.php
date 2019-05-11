@@ -8,10 +8,17 @@ function getDatabaseConnection(){
         $connParts = parse_url($connUrl);
     }
     
-    $host = $hasConnUrl ? $connParts['host']: getenv('IP');
-    $dbname = $hasConnUrl ? ltrim($connParts['path'],'/') : 'QuickTube';
-    $username = $hasConnUrl ? $connParts['user'] : getenv('C9_USER');
-    $password = $hasConnUrl ? $connParts['pass'] : '';
+    // $host = $hasConnUrl ? $connParts['host']: getenv('IP');
+    // $dbname = $hasConnUrl ? ltrim($connParts['path'],'/') : 'QuickTube';
+    // $username = $hasConnUrl ? $connParts['user'] : getenv('C9_USER');
+    // $password = $hasConnUrl ? $connParts['pass'] : '';
+    
+    // $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    
+    $host = "localhost";
+    $dbname = "QuickTube";
+    $username = "dkanasugi";
+    $password = "";
     
     $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     
