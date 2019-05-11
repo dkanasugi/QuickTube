@@ -26,14 +26,24 @@ $i = 0;
  */
 $i++;
 /* Authentication type */
+$cfg['Servers'][$i]['auth_type'] = 'cookie';
+/* Server parameters */
+$cfg['Servers'][$i]['host'] = 'localhost';
+$cfg['Servers'][$i]['compress'] = false;
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
 
-//mysql://b7606294bab829:cf7395d4@us-cdbr-iron-east-02.cleardb.net/heroku_573bd42da32009b?reconnect=true
-
+/**
+ * Second Server
+ * mysql://b7606294bab829:cf7395d4@us-cdbr-iron-east-02.cleardb.net/heroku_573bd42da32009b?reconnect=true
+ */
+ $i++;
+ /*Authentication type*/ 
+ 
 $cfg['Servers'][$i]['auth_type'] = 'config';
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = 'ui0tj7jn8pyv9lp6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-$cfg['Servers'][$i]['user'] = "y4osxnqeeqbg48i0";
-$cfg['Servers'][$i]['password'] = "syg9fuicy92tvb5s";
+$cfg['Servers'][$i]['host'] = 'us-cdbr-iron-east-02.cleardb.net';
+$cfg['Servers'][$i]['user'] = "b7606294bab829";
+$cfg['Servers'][$i]['password'] = "cf7395d4";
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
