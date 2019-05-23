@@ -21,7 +21,7 @@ The project also records every searched history in from the search bar. </br><br
 <b>Screenshots</b>
 ![quicktube1](https://user-images.githubusercontent.com/38510468/58226407-65da5400-7cdb-11e9-8ccf-5bb5578d2d03.jpg)
 </br>
-This screen shot shows a user that searches "python crash course" and it pulls YouTube videos onto the page. The other set of videos is the current videos that are trending as of right now.</br>
+This screen shot shows a user that searches "python crash course" and it pulls YouTube videos onto the page. The other set of videos is the current videos that are trending as of right now.</br><br></br>
 ![quicktube2](https://user-images.githubusercontent.com/38510468/58226465-9c17d380-7cdb-11e9-81ce-48c5fc7d4116.png)
 This screenshot shows user with the name daichi and his search history, his playlist, and his option to change his password.The admin page have the ability to see every search and the number of videos that in the playlist and users in the database.
 
