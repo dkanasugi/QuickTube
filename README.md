@@ -1,5 +1,5 @@
 <h1>Project Name: QuickTube </h1><br>
-<b>Daichi Kanasugi</b><br>
+<b>Daichi Kanasugi</b></br>
 <b>Collaborated Project with Ricky Baca, Maximillian Renga, Antonio Felix</b></br>
 This project is a mini video player that uses Google's YouTube API. It retrieves popular and searched videos
 from Youtube. People who signed up will have the ability to save the videos they liked and be able to put it in their playlist.
@@ -18,3 +18,5 @@ The project also records every searched history in from the search bar. </br>
 <li>Admins have the ability to see how many users are an active user on QuickTube, how many videos are stored in playlist, and how many searches were made.</li></br></ul>
 
 <b>Screenshots</b>
+<a href=https://github.com/dkanasugi/QuickTube/issues/1#issue-447449170></a>
+</br>
